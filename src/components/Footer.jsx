@@ -7,11 +7,7 @@ const Footer = () => {
         <footer className="bg-white pt-20 pb-10">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-            <div className="col-span-1 md:col-span-2">
-              <h3 className="text-2xl font-bold mb-4">Pnematique</h3>
-              <p className="text-gray-600 mb-6">
-                Join our mission to create a more sustainable future, 
-                one bag at a time.
+            <div c
               </p>
               <div className="flex space-x-4">
                  <motion.a

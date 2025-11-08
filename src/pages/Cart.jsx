@@ -3,11 +3,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import CartItem from '../components/CartItem';
 
-const Cart = ({ onCartCountChange }) => {
-  const [cartItems, setCartItems] = useState(() => {
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
 
   const handleUpdateQuantity = (id, quantity) => {
     const updatedCart = cartItems.map((item) =>
