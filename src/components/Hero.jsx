@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import img from '../assets/img/logo/LOGO.PNG';
+import img from '../assets/img/logo/logo.png';
 import { Link } from 'react-router-dom';
 
 export const Hero = () => {
@@ -67,5 +66,4 @@ export const Hero = () => {
   );
 };
 export default Hero;
-
 
