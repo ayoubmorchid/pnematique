@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
 import p1 from '../assets/img/Products/p1.webp';
 import p2 from '../assets/img/Products/p2.jpg';

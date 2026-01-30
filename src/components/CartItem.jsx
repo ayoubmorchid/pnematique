@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Minus, Plus, X } from 'lucide-react';
 

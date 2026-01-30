@@ -1,7 +1,6 @@
-import React from 'react';
 import img from '../assets/img/about.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import hsina from '../assets/img/team/hsina.jpg';
 import med from '../assets/img/team/med.jpg';
 import brahim from '../assets/img/team/brahim.jpg';
