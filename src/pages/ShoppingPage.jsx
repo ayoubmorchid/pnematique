@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import p1 from '../assets/img/Products/p1.webp';
 import p2 from '../assets/img/Products/p2.jpg';
@@ -75,23 +75,21 @@ const ShoppingPage = ({onCartCountChange}) => {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  const addToCart = (product) => {
-    const existingItem = cart.find((item) => item.id === product.id);
-  
-    if (existingItem) {
-      // Update quantity if the item is already in the cart
-      const updatedCart = cart.map((item) =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      );
-      setCart(updatedCart);
-    } else {
-      // Add the new product with a default quantity of 1
-      const updatedCart = [...cart, { ...product, quantity: 1 }];
-      setCart(updatedCart);
-    }
-  };
+  const addToCart = useCallback((product) => {
+    setCart((currentCart) => {
+      const existingItem = currentCart.find((item) => item.id === product.id);
+
+      if (existingItem) {
+        return currentCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+
+      return [...currentCart, { ...product, quantity: 1 }];
+    });
+  }, []);
   
 
   // Update localStorage whenever the cart changes
@@ -102,7 +100,7 @@ const ShoppingPage = ({onCartCountChange}) => {
   useEffect(() => {
     const uniqueItemCount = new Set(cart.map(item => item.id)).size;
     onCartCountChange(uniqueItemCount); 
-  }, [cart]); 
+  }, [cart, onCartCountChange]); 
 
 
 
