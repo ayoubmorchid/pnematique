@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ShoppingCart } from 'lucide-react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/img/logo/logo.png';
 
 const navigation = [
@@ -16,10 +16,15 @@ const Header = ({ cartCount }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     setIsLoggedIn(!!localStorage.getItem('token'));
   }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -28,11 +33,12 @@ const Header = ({ cartCount }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 shadow-sm">
-      <nav className="container mx-auto px-6 py-4">
+    <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 shadow-sm">
+      <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          <NavLink to="/" className="flex items-center space-x-2">
-            <img src={logo} className="w-10" alt="GreenBag Logo" />
+          <NavLink to="/" className="flex items-center gap-2" aria-label="Go to home page">
+            <img src={logo} className="w-10 h-10 object-contain" alt="Pneumatique logo" />
+            <span className="hidden sm:inline text-lg font-bold text-gray-900">Pneumatique</span>
           </NavLink>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -82,6 +88,8 @@ const Header = ({ cartCount }) => {
             <button
               className="md:hidden pl-4"
               onClick={() => setIsOpen(!isOpen)}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
               aria-label="Toggle navigation menu"
             >
               {isOpen ? (
@@ -100,8 +108,9 @@ const Header = ({ cartCount }) => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden"
+              id="mobile-navigation"
             >
-              <div className="py-4 space-y-4">
+              <div className="py-4 space-y-3 border-t border-gray-100 mt-3">
                 {navigation.map((item) => (
                   <NavLink
                     key={item.name}
@@ -111,7 +120,6 @@ const Header = ({ cartCount }) => {
                         ? 'block text-[#32CD32] font-bold transition-colors'
                         : 'block text-gray-600 hover:text-[#32CD32] transition-colors'
                     }
-                    onClick={() => setIsOpen(false)}
                   >
                     {item.name}
                   </NavLink>
