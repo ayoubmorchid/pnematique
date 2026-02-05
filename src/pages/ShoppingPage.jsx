@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import p1 from '../assets/img/Products/p1.webp';
 import p2 from '../assets/img/Products/p2.jpg';
@@ -107,8 +108,8 @@ const ShoppingPage = ({onCartCountChange}) => {
   
 
   return (
-    <div className="font-[sans-serif] bg-gray-100">
-      <div className="p-4 mx-auto lg:max-w-7xl md:max-w-4xl sm:max-w-xl max-sm:max-w-sm">
+    <div className="font-[sans-serif] bg-gray-100 min-h-screen">
+      <div className="px-4 py-10 sm:px-6 lg:px-8 mx-auto max-w-7xl">
         {/* first section*/}
         <div className="text-center mb-8">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-4">Car Parts & Accessories</h2>
@@ -117,7 +118,7 @@ const ShoppingPage = ({onCartCountChange}) => {
           </p>
         </div>
         {/*  producte */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-xl:gap-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} AddToCart={addToCart} />
           ))}
@@ -127,9 +128,9 @@ const ShoppingPage = ({onCartCountChange}) => {
         <div className="mt-8 text-center">
           <p className="text-gray-600 text-sm sm:text-base">
             Need assistance?{' '}
-            <a href="/contact" className="text-[#28a745] font-semibold hover:text-[#218838]">
+            <Link to="/contact" className="text-[#28a745] font-semibold hover:text-[#218838]">
               Contact us
-            </a>{' '}
+            </Link>{' '}
             for expert recommendations and support.
           </p>
         </div>
