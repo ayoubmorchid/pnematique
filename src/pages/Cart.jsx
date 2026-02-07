@@ -45,21 +45,24 @@ const Cart = ({ onCartCountChange }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            🛒 Your Cart
+            Your Cart
           </motion.h1>
 
           {cartItems.length === 0 && (
             <div className="text-center space-y-6 py-12">
               <p className="text-gray-600 text-xl">Your cart is empty.</p>
               <p className="text-gray-500 text-lg">Browse our products and add items to your cart.</p>
-              <motion.a
-                href="/shop"
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition text-lg"
               >
-                Continue Shopping
-              </motion.a>
+                <Link
+                  to="/shop"
+                  className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition text-lg"
+                >
+                  Continue Shopping
+                </Link>
+              </motion.div>
             </div>
           )}
 
@@ -82,15 +85,15 @@ const Cart = ({ onCartCountChange }) => {
                 <div className="space-y-2 text-gray-700 mb-4">
                   <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span>{subtotal.toFixed(2)} MAD</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Shipping</span>
-                    <span>${shipping.toFixed(2)}</span>
+                    <span>{shipping.toFixed(2)} MAD</span>
                   </div>
                   <div className="border-t pt-4 mt-4 font-bold text-lg flex justify-between text-gray-900">
                     <span>Total</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>{total.toFixed(2)} MAD</span>
                   </div>
                 </div>
 
@@ -99,7 +102,7 @@ const Cart = ({ onCartCountChange }) => {
                   onClick={() => localStorage.setItem('invoice', JSON.stringify(cartItems))}
                   className="mt-6 block text-center bg-[#32CD32] text-white py-3 rounded-lg font-semibold hover:bg-[#28a428] transition-colors"
                 >
-                  💳 Proceed to Payment
+                  Proceed to Payment
                 </Link>
               </div>
             )}
