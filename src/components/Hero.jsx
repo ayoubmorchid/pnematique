@@ -4,22 +4,21 @@ import { Link } from 'react-router-dom';
 
 export const Hero = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-white relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-10 py-12">
           <motion.div 
             className="md:w-1/2 text-center md:text-left"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Empowering Your Automotive 
             <span className="text-[#32CD32]"> Journey</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
-            Car parts, expert repair, and 
-            Comfortable, fully furnished apartments for long-term stays in a prime location.
+            <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-xl mx-auto md:mx-0">
+            Quality car parts, practical accessories, and a smoother shopping experience for everyday vehicle care.
             </p>
             <Link to="/shop" className='bg-[#32CD32] text-white px-8 py-4 rounded-full text-lg font-semibold
                          hover:shadow-lg transition-shadow duration-300'>
@@ -66,4 +65,3 @@ export const Hero = () => {
   );
 };
 export default Hero;
-
