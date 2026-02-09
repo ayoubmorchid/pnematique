@@ -13,8 +13,8 @@ import { NavLink } from "react-router-dom";
 
 const BestOfferSection = () => {
   return (
-    <div className="container mx-auto py-8 min-h-screen flex items-center justify-center flex-col">
-      <div className="w-full" style={{ padding: "8px" }}>
+    <section className="container mx-auto py-12 px-4 sm:px-6 min-h-screen flex items-center justify-center flex-col">
+      <div className="w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
           <div className="lg:col-span-7">
@@ -34,29 +34,29 @@ const BestOfferSection = () => {
               <SwiperSlide>
                 <img
                   src={o3}
-                  alt="Large Banner 1"
-                  className="w-full h-auto object-cover"
+                  alt="Featured automotive offer"
+                  className="w-full h-72 sm:h-[420px] object-cover"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <img
                   src={o4}
-                  alt="Large Banner 2"
-                  className="w-full h-auto object-cover"
+                  alt="Seasonal tire offer"
+                  className="w-full h-72 sm:h-[420px] object-cover"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <img
                   src={o5}
-                  alt="Large Banner 2"
-                  className="w-full h-auto object-cover"
+                  alt="Maintenance product offer"
+                  className="w-full h-72 sm:h-[420px] object-cover"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <img
                   src={o6}
-                  alt="Large Banner 2"
-                  className="w-full h-auto object-cover"
+                  alt="Accessory discount offer"
+                  className="w-full h-72 sm:h-[420px] object-cover"
                 />
               </SwiperSlide>
             </Swiper>
@@ -67,14 +67,14 @@ const BestOfferSection = () => {
             <div className="h-auto rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
               <img
                 src={o1}
-                alt="Small Banner 1"
+                alt="Brake and service offer"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="h-auto rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
               <img
                 src={o2}
-                alt="Small Banner 2"
+                alt="Oil and parts offer"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -90,7 +90,7 @@ const BestOfferSection = () => {
           Shop Now
         </NavLink>
       </div>
-    </div>
+    </section>
   );
 };
 
