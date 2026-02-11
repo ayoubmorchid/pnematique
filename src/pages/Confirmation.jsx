@@ -42,7 +42,7 @@ const Confirmation = () => {
 
   return (
     <div className="min-h-screen bg-white px-4 py-10 flex flex-col items-center text-center">
-      <h1 className="text-4xl font-bold text-green-600 mb-6">✅ Order Confirmed!</h1>
+      <h1 className="text-4xl font-bold text-green-600 mb-6">Order Confirmed!</h1>
       <p className="text-lg text-gray-700 mb-2">Order Number: <strong>#{orderId}</strong></p>
 
       {shippingInfo && (
@@ -58,7 +58,10 @@ const Confirmation = () => {
         className="bg-gray-100 shadow-md p-6 rounded-md w-full max-w-2xl print:bg-white print:shadow-none"
       >
         <h2 className="text-xl font-semibold mb-4">Invoice</h2>
-        <table className="w-full text-left border-collapse mb-4">
+        {orderItems.length === 0 ? (
+          <p className="text-gray-600">No invoice items are available for this order.</p>
+        ) : (
+        <table className="w-full text-left border-collapse mb-4 text-sm sm:text-base">
           <thead>
             <tr className="border-b">
               <th className="py-2">Product</th>
@@ -78,7 +81,8 @@ const Confirmation = () => {
             ))}
           </tbody>
         </table>
-        <div className="flex justify-between font-semibold">
+        )}
+        <div className="flex justify-between font-semibold border-t pt-4">
           <span>Total:</span>
           <span>{total.toFixed(2)} MAD</span>
         </div>
@@ -89,13 +93,13 @@ const Confirmation = () => {
           onClick={handlePrint}
           className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700"
         >
-          🖨️ Print Invoice
+          Print Invoice
         </button>
         <button
           onClick={handleDownloadPDF}
           className="bg-gray-700 text-white px-6 py-3 rounded hover:bg-gray-800"
         >
-          📥 Download PDF
+          Download PDF
         </button>
         <Link
           to="/shop"
