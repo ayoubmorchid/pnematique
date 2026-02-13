@@ -11,3 +11,4 @@ This project is a React and Vite single-page storefront for automotive parts and
 - The app built successfully, but lint reported unused imports, a Swiper setup issue, JSX text escaping issues, and a Fast Refresh warning.
 - One image import used casing that can fail on Linux deployments.
 - Some UI text and icons had encoding-sensitive characters.
+- 2026-02-13 - Reviewed basic accessibility: labels, button names, link semantics, and focus states.
