@@ -12,3 +12,4 @@ This project is a React and Vite single-page storefront for automotive parts and
 - One image import used casing that can fail on Linux deployments.
 - Some UI text and icons had encoding-sensitive characters.
 - 2026-02-13 - Reviewed basic accessibility: labels, button names, link semantics, and focus states.
+- 2026-02-14 - Reviewed UI consistency across cards, cart, payment, and confirmation screens.
