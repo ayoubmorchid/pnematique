@@ -13,3 +13,4 @@ This project is a React and Vite single-page storefront for automotive parts and
 - Some UI text and icons had encoding-sensitive characters.
 - 2026-02-13 - Reviewed basic accessibility: labels, button names, link semantics, and focus states.
 - 2026-02-14 - Reviewed UI consistency across cards, cart, payment, and confirmation screens.
+- 2026-02-15 - Confirmed build behavior after lint cleanup and route fallback changes.
