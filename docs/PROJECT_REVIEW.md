@@ -14,3 +14,4 @@ This project is a React and Vite single-page storefront for automotive parts and
 - 2026-02-13 - Reviewed basic accessibility: labels, button names, link semantics, and focus states.
 - 2026-02-14 - Reviewed UI consistency across cards, cart, payment, and confirmation screens.
 - 2026-02-15 - Confirmed build behavior after lint cleanup and route fallback changes.
+- 2026-02-16 - Documented component refactor boundaries for cart context, cards, and navigation.
