@@ -18,3 +18,4 @@ This project is a React and Vite single-page storefront for automotive parts and
 - 2026-02-17 - Reviewed asset imports and fixed the logo casing risk for Linux deployments.
 - 2026-02-18 - Checked image usage in hero, offers, products, and team sections for broken imports and useful alt text.
 - 2026-02-19 - Reviewed consistent currency labels, button wording, and clean confirmation/payment text.
+- 2026-02-20 - Reviewed responsive behavior for the header, hero, offer grid, product grid, and cart rows.
