@@ -20,3 +20,4 @@ This project is a React and Vite single-page storefront for automotive parts and
 - 2026-02-19 - Reviewed consistent currency labels, button wording, and clean confirmation/payment text.
 - 2026-02-20 - Reviewed responsive behavior for the header, hero, offer grid, product grid, and cart rows.
 - 2026-02-21 - Documented layout polish around spacing, section widths, and stable card dimensions.
+- 2026-02-22 - Reviewed bundle warnings and kept simple manual chunks without adding complex lazy loading.
