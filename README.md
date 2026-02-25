@@ -1,8 +1,6 @@
-# Pneumatique / GreenBag React UI
+# Pneumatique React Store
 
-A React + Vite frontend project for practicing a modern product or store-style interface. The project uses React, routing, animation, icons, and export utilities to build a richer UI experience.
-
-The repository name should be reviewed later for clarity. If the project is about tires, `pneumatique-store` would be clearer. If it is about the GreenBag interface, `greenbag-react-store` would be clearer.
+Pneumatique is a React + Vite storefront for automotive parts and accessories. It includes a home page, product catalog, cart flow, simple protected checkout pages, and invoice export utilities.
 
 ## Features
 
@@ -12,6 +10,7 @@ The repository name should be reviewed later for clarity. If the project is abou
 - Icon-based interface elements
 - PDF/image export utilities with `jspdf` and `html2canvas`
 - Styling workflow with Tailwind CSS and PostCSS
+- Responsive layout for desktop and mobile screens
 
 ## Tech Stack
 
