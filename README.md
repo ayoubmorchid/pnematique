@@ -32,10 +32,22 @@ Install dependencies:
 npm install
 ```
 
+On Windows PowerShell, if script execution blocks `npm`, use:
+
+```powershell
+npm.cmd install
+```
+
 Start the development server:
 
 ```bash
 npm run dev
+```
+
+PowerShell alternative:
+
+```powershell
+npm.cmd run dev
 ```
 
 Build for production:
