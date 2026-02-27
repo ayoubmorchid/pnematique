@@ -62,6 +62,20 @@ Preview the build:
 npm run preview
 ```
 
+## Useful Checks
+
+Run the production build before publishing changes:
+
+```bash
+npm run build
+```
+
+Run lint checks:
+
+```bash
+npm run lint
+```
+
 ## What I Practiced
 
 - Building a React/Vite frontend project
