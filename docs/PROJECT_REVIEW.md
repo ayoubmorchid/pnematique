@@ -24,3 +24,4 @@ This project is a React and Vite single-page storefront for automotive parts and
 - 2026-02-23 - Reviewed code readability after callback, context, and component cleanup changes.
 - 2026-02-24 - Confirmed no extra helpers or abstractions were needed beyond the cart context split.
 - 2026-02-28 - Completed final responsive review notes for mobile header, shop grid, cart, and checkout screens.
+- 2026-03-01 - Recorded final UI polish decisions: restrained styling, clearer buttons, and consistent wording.
