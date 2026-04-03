@@ -117,8 +117,8 @@ const Header = ({ cartCount }) => {
                     to={item.href}
                     className={({ isActive }) =>
                       isActive
-                        ? 'block text-[#32CD32] font-bold transition-colors'
-                        : 'block text-gray-600 hover:text-[#32CD32] transition-colors'
+                        ? 'block text-green-700 font-bold transition-colors'
+                        : 'block text-gray-600 hover:text-green-700 transition-colors'
                     }
                   >
                     {item.name}
