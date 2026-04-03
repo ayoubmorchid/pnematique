@@ -79,7 +79,7 @@ const Header = ({ cartCount }) => {
             <NavLink to="/cart" aria-label="View cart" className="relative">
               <ShoppingCart className="w-6 h-6 text-gray-600 hover:text-[#32CD32] transition-colors" />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-[#32CD32] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-green-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center shadow-sm">
                   {cartCount}
                 </span>
               )}
