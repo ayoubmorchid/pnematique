@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const Hero = () => {
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-white relative overflow-hidden">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-gradient-to-br from-white via-green-50/70 to-white relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-10 py-12">
           <motion.div 
