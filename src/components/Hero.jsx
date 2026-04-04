@@ -15,7 +15,7 @@ export const Hero = () => {
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Empowering Your Automotive 
-            <span className="text-[#32CD32]"> Journey</span>
+            <span className="text-green-700"> Journey</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-xl mx-auto md:mx-0">
             Quality car parts, practical accessories, and a smoother shopping experience for everyday vehicle care.
