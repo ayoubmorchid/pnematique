@@ -20,8 +20,8 @@ export const Hero = () => {
             <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-xl mx-auto md:mx-0">
             Quality car parts, practical accessories, and a smoother shopping experience for everyday vehicle care.
             </p>
-            <Link to="/shop" className='bg-[#32CD32] text-white px-8 py-4 rounded-full text-lg font-semibold
-                         hover:shadow-lg transition-shadow duration-300'>
+            <Link to="/shop" className='bg-green-700 text-white px-8 py-4 rounded-full text-lg font-semibold
+                         hover:bg-green-800 hover:shadow-lg transition-all duration-300'>
               Explore Now
             </Link>
           </motion.div>
