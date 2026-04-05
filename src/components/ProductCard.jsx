@@ -5,7 +5,7 @@ const ProductCard = ({ product, AddToCart }) => {
 
   return (
     <article className="bg-white rounded-lg p-4 shadow-sm border border-gray-100 hover:border-green-200 hover:shadow-md hover:-translate-y-1 transition-all relative">
-      <div className="mb-4 bg-gray-100 rounded-md p-3">
+      <div className="mb-4 bg-green-50/60 rounded-md p-3">
         <img src={product.image} alt={product.name} className="aspect-[4/3] w-full object-contain" />
       </div>
 
