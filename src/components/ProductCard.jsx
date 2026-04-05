@@ -12,7 +12,7 @@ const ProductCard = ({ product, AddToCart }) => {
       <div className="flex h-full flex-col">
         <div className="flex items-start gap-3">
           <h3 className="text-base font-bold text-gray-800 leading-snug">{product.name}</h3>
-          <p className="text-base text-green-700 font-bold ml-auto whitespace-nowrap">{product.price} MAD</p>
+          <p className="text-base text-emerald-700 font-bold ml-auto whitespace-nowrap">{product.price} MAD</p>
         </div>
         <p className="text-gray-500 text-sm mt-2 leading-relaxed">{product.description}</p>
         <div className="flex items-center gap-2 mt-4">
