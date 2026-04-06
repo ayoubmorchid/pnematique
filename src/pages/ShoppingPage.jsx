@@ -108,7 +108,7 @@ const ShoppingPage = ({onCartCountChange}) => {
   
 
   return (
-    <div className="font-[sans-serif] bg-gray-100 min-h-screen">
+    <div className="font-[sans-serif] bg-gradient-to-b from-green-50/60 to-gray-100 min-h-screen">
       <div className="px-4 py-10 sm:px-6 lg:px-8 mx-auto max-w-7xl">
         {/* first section*/}
         <div className="text-center mb-8">
