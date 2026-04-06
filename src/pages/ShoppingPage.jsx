@@ -112,7 +112,7 @@ const ShoppingPage = ({onCartCountChange}) => {
       <div className="px-4 py-10 sm:px-6 lg:px-8 mx-auto max-w-7xl">
         {/* first section*/}
         <div className="text-center mb-8">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-4">Car Parts & Accessories</h2>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Car Parts & Accessories</h2>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
             Browse our high-quality automotive spare parts and accessories to keep your vehicle running smoothly.
           </p>
