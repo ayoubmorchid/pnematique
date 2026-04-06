@@ -125,7 +125,7 @@ const ShoppingPage = ({onCartCountChange}) => {
         </div>
 
         {/* section close*/}
-        <div className="mt-8 text-center">
+        <div className="mt-10 text-center">
           <p className="text-gray-600 text-sm sm:text-base">
             Need assistance?{' '}
             <Link to="/contact" className="text-[#28a745] font-semibold hover:text-[#218838]">
