@@ -9,8 +9,7 @@ const Footer = () => {
             <div className="col-span-1 md:col-span-2">
               <h3 className="text-2xl font-bold mb-4">Pnematique</h3>
               <p className="text-gray-600 mb-6">
-                Join our mission to create a more sustainable future, 
-                one bag at a time.
+                Practical automotive parts and accessories for smoother everyday maintenance.
               </p>
               <div className="flex space-x-4">
                  <motion.a
