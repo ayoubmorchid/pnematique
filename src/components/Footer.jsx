@@ -48,7 +48,7 @@ const Footer = () => {
                   className="flex-1 px-4 py-2 rounded-l-full border border-gray-300 focus:outline-none focus:border-[#32CD32]"
                 />
                 <motion.button
-                  className="bg-[#32CD32] text-white px-6 py-2 rounded-r-full"
+                  className="bg-green-700 text-white px-6 py-2 rounded-r-full hover:bg-green-800 transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
