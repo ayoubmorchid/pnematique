@@ -127,7 +127,7 @@ const Payment = () => {
           <button
             type="submit"
             disabled={processing}
-            className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-3 rounded-md font-semibold transition"
+            className="w-full bg-green-700 hover:bg-green-800 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-3 rounded-md font-semibold transition"
           >
             {processing ? "Processing..." : "Pay Now"}
           </button>
