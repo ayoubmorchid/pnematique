@@ -37,7 +37,7 @@ const Payment = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-gray-100 flex items-center justify-center px-4 py-12">
       <div className="bg-white shadow-2xl rounded-xl p-8 max-w-md w-full">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
           Secure Payment
