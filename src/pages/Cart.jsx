@@ -80,7 +80,7 @@ const Cart = ({ onCartCountChange }) => {
             </div>
 
             {cartItems.length > 0 && (
-              <div className="bg-white p-6 rounded-2xl shadow-xl h-fit sticky top-32">
+              <div className="bg-white p-6 rounded-2xl shadow-xl border border-green-100 h-fit sticky top-32">
                 <h2 className="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">🧾 Order Summary</h2>
                 <div className="space-y-2 text-gray-700 mb-4">
                   <div className="flex justify-between">
