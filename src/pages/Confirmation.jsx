@@ -41,7 +41,7 @@ const Confirmation = () => {
   );
 
   return (
-    <div className="min-h-screen bg-white px-4 py-10 flex flex-col items-center text-center">
+    <div className="min-h-screen bg-gradient-to-b from-white to-green-50 px-4 py-10 flex flex-col items-center text-center">
       <h1 className="text-4xl font-bold text-green-600 mb-6">Order Confirmed!</h1>
       <p className="text-lg text-gray-700 mb-2">Order Number: <strong>#{orderId}</strong></p>
 
