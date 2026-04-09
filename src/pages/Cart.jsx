@@ -37,7 +37,7 @@ const Cart = ({ onCartCountChange }) => {
   const total = subtotal + shipping;
 
   return (
-    <div className="pt-20 bg-gray-50 min-h-screen">
+    <div className="pt-20 bg-gradient-to-b from-green-50/50 to-gray-50 min-h-screen">
       <section className="py-20">
         <div className="container mx-auto px-6">
           <motion.h1
