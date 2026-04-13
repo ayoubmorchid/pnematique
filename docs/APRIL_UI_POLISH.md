@@ -11,3 +11,4 @@
 - 2026-04-12 17:20 - Reviewed confirmation page background and invoice fallback readability.
 - 2026-04-13 09:05 - Rechecked responsive behavior for header, hero, product grid, cart, and checkout.
 - 2026-04-13 13:45 - Rechecked labels, aria names, links, and focus-visible states after UI changes.
+- 2026-04-13 17:30 - Confirmed build and lint remain the main validation steps for the polish branch.
