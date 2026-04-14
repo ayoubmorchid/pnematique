@@ -13,3 +13,4 @@
 - 2026-04-13 13:45 - Rechecked labels, aria names, links, and focus-visible states after UI changes.
 - 2026-04-13 17:30 - Confirmed build and lint remain the main validation steps for the polish branch.
 - 2026-04-14 09:00 - Final color review kept the palette green-led but softer and more consistent.
+- 2026-04-14 13:00 - Final layout review confirmed small spacing changes without changing the app idea.
