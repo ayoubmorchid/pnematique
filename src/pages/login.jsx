@@ -1,17 +1,20 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/cart-context";
+import { loginUser } from "../utils/auth";
 
 const Login = () => {
   const { importPendingBook } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [errors, setErrors] = useState({});
+  const [submitError, setSubmitError] = useState("");
   const navigate = useNavigate();
 
   const handleValidation = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setSubmitError("");
 
     if (name === "username") {
       setErrors((prev) => ({
@@ -41,18 +44,19 @@ const Login = () => {
     }
 
     setTimeout(() => {
-      if (formData.username === "admin" && formData.password === "123456") {
-        localStorage.setItem("token", "logged_in");
-        importPendingBook();
-        const redirectPath = localStorage.getItem("redirectPath") || "/";
-        localStorage.removeItem("redirectPath");
+      const result = loginUser(formData);
+      if (!result.ok) {
+        setSubmitError(result.message);
         setIsLoading(false);
-        navigate(redirectPath);
-      } else {
-        setIsLoading(false);
-        alert("Invalid username or password");
+        return;
       }
-    }, 2000);
+
+      importPendingBook();
+      const redirectPath = localStorage.getItem("redirectPath") || "/";
+      localStorage.removeItem("redirectPath");
+      setIsLoading(false);
+      navigate(redirectPath);
+    }, 600);
   };
 
   return (
@@ -88,6 +92,8 @@ const Login = () => {
             />
             {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
           </div>
+
+          {submitError && <p className="text-sm text-red-600">{submitError}</p>}
 
           <button
             type="submit"
