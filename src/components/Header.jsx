@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ShoppingCart } from 'lucide-react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/img/logo/logo.png';
+import { isAuthenticated, logoutUser } from '../utils/auth';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -19,7 +20,16 @@ const Header = ({ cartCount }) => {
   const location = useLocation();
 
   useEffect(() => {
-    setIsLoggedIn(!!localStorage.getItem('token'));
+    const syncAuthState = () => setIsLoggedIn(isAuthenticated());
+
+    syncAuthState();
+    window.addEventListener('auth-change', syncAuthState);
+    window.addEventListener('storage', syncAuthState);
+
+    return () => {
+      window.removeEventListener('auth-change', syncAuthState);
+      window.removeEventListener('storage', syncAuthState);
+    };
   }, []);
 
   useEffect(() => {
@@ -27,7 +37,7 @@ const Header = ({ cartCount }) => {
   }, [location.pathname]);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    logoutUser();
     setIsLoggedIn(false);
     navigate('/login');
   };
