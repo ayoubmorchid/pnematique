@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import CartItem from '../components/CartItem';
+import { readStorageJson } from '../utils/storage';
 
 const Cart = ({ onCartCountChange }) => {
   const [cartItems, setCartItems] = useState(() => {
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
+    return readStorageJson('cart', []);
   });
 
   const handleUpdateQuantity = (id, quantity) => {

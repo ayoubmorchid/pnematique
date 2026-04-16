@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { readStorageJson } from '../utils/storage';
 
 const Confirmation = () => {
   const [orderItems, setOrderItems] = useState([]);
@@ -10,10 +11,8 @@ const Confirmation = () => {
   const orderId = Math.floor(100000 + Math.random() * 900000);
 
   useEffect(() => {
-    const items = localStorage.getItem('invoice');
-    const info = localStorage.getItem('shippingInfo');
-    if (items) setOrderItems(JSON.parse(items));
-    if (info) setShippingInfo(JSON.parse(info));
+    setOrderItems(readStorageJson('invoice', []));
+    setShippingInfo(readStorageJson('shippingInfo', null));
   }, []);
 
   const handlePrint = () => {

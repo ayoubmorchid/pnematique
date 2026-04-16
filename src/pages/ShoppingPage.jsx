@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
+import { readStorageJson } from '../utils/storage';
 import p1 from '../assets/img/Products/p1.webp';
 import p2 from '../assets/img/Products/p2.jpg';
 import p3 from '../assets/img/Products/p3.avif';
@@ -71,9 +72,7 @@ const products = [
 
 const ShoppingPage = ({onCartCountChange}) => {
   const [cart, setCart] = useState(() => {
-    // Load cart from localStorage or initialize as an empty array
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
+    return readStorageJson('cart', []);
   });
 
   const addToCart = useCallback((product) => {
