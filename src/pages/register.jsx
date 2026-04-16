@@ -71,6 +71,7 @@ const SignUpForm = () => {
             <input
               type="text"
               id="username"
+              autoComplete="username"
               value={formData.username}
               onChange={handleChange}
               placeholder="Type your username or Email"
@@ -84,6 +85,7 @@ const SignUpForm = () => {
             <input
               type="password"
               id="password"
+              autoComplete="new-password"
               value={formData.password}
               onChange={handleChange}
               placeholder="Type your password"
@@ -93,10 +95,11 @@ const SignUpForm = () => {
           </div>
 
           <div>
-            <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700">Confirm Password</label>
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm Password</label>
             <input
               type="password"
               id="confirmPassword"
+              autoComplete="new-password"
               value={formData.confirmPassword}
               onChange={handleChange}
               placeholder="Confirm your password"
@@ -105,7 +108,7 @@ const SignUpForm = () => {
             />
           </div>
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
 
           <button
             type="submit"

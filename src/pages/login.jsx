@@ -73,6 +73,8 @@ const Login = () => {
               type="text"
               id="username"
               name="username"
+              autoComplete="username"
+              value={formData.username}
               onChange={handleValidation}
               className={`mt-1 block w-full px-4 py-2 border ${errors.username ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400`}
               required
@@ -86,6 +88,8 @@ const Login = () => {
               type="password"
               id="password"
               name="password"
+              autoComplete="current-password"
+              value={formData.password}
               onChange={handleValidation}
               className={`mt-1 block w-full px-4 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400`}
               required
@@ -93,7 +97,7 @@ const Login = () => {
             {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
           </div>
 
-          {submitError && <p className="text-sm text-red-600">{submitError}</p>}
+          {submitError && <p className="text-sm text-red-600" role="alert">{submitError}</p>}
 
           <button
             type="submit"
