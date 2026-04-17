@@ -1,7 +1,7 @@
-import { useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/cart-context";
-import { loginUser } from "../utils/auth";
+import { getCurrentUser, loginUser } from "../utils/auth";
 
 const Login = () => {
   const { importPendingBook } = useContext(CartContext);
@@ -10,6 +10,12 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [submitError, setSubmitError] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (getCurrentUser()) {
+      navigate("/", { replace: true });
+    }
+  }, [navigate]);
 
   const handleValidation = (e) => {
     const { name, value } = e.target;

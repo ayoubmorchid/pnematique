@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { registerUser } from "../utils/auth";
+import { getCurrentUser, registerUser } from "../utils/auth";
 
 const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,6 +11,12 @@ const SignUpForm = () => {
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (getCurrentUser()) {
+      navigate("/", { replace: true });
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
