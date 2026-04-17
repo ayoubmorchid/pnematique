@@ -76,6 +76,10 @@ Run lint checks:
 npm run lint
 ```
 
+## Demo Account Flow
+
+Use the sign-up page to create a local demo account. The app stores demo users in the browser local storage, then uses that account for login and protected cart/checkout pages.
+
 ## What I Practiced
 
 - Building a React/Vite frontend project
