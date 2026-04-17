@@ -15,3 +15,4 @@
 - 2026-04-14 09:00 - Final color review kept the palette green-led but softer and more consistent.
 - 2026-04-14 13:00 - Final layout review confirmed small spacing changes without changing the app idea.
 - 2026-04-14 17:00 - Final April polish notes completed before final build and status verification.
+- 2026-04-17 17:00 - Verified local account flow: sign-up creates a user, login uses saved users, protected pages read the shared auth state.
