@@ -62,7 +62,7 @@ export const loginUser = ({ username, password }) => {
     return { ok: false, message: "Invalid username or password." };
   }
 
-  writeJson(SESSION_KEY, { id: user.id, username: user.username });
+  writeJson(SESSION_KEY, { id: user.id, username: user.username, email: user.email });
   localStorage.setItem("token", user.id);
   window.dispatchEvent(new Event("auth-change"));
 
