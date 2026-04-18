@@ -76,12 +76,24 @@ const Header = ({ cartCount }) => {
                 </NavLink>
               </>
             ) : (
-              <button
-                onClick={handleLogout}
-                className="text-red-500 hover:text-red-600 transition-colors font-medium"
-              >
-                Logout
-              </button>
+              <>
+                <NavLink
+                  to="/profile"
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'text-green-700 font-bold transition-colors'
+                      : 'text-gray-600 hover:text-green-700 transition-colors font-medium'
+                  }
+                >
+                  Profile
+                </NavLink>
+                <button
+                  onClick={handleLogout}
+                  className="text-red-500 hover:text-red-600 transition-colors font-medium"
+                >
+                  Logout
+                </button>
+              </>
             )}
           </div>
 
@@ -145,15 +157,27 @@ const Header = ({ cartCount }) => {
                     </NavLink>
                   </>
                 ) : (
-                  <button
-                    onClick={() => {
-                      handleLogout();
-                      setIsOpen(false);
-                    }}
-                    className="block text-red-500 hover:text-red-600 transition-colors"
-                  >
-                    Logout
-                  </button>
+                  <>
+                    <NavLink
+                      to="/profile"
+                      className={({ isActive }) =>
+                        isActive
+                          ? 'block text-green-700 font-bold transition-colors'
+                          : 'block text-gray-600 hover:text-green-700 transition-colors'
+                      }
+                    >
+                      Profile
+                    </NavLink>
+                    <button
+                      onClick={() => {
+                        handleLogout();
+                        setIsOpen(false);
+                      }}
+                      className="block text-red-500 hover:text-red-600 transition-colors"
+                    >
+                      Logout
+                    </button>
+                  </>
                 )}
               </div>
             </motion.div>
