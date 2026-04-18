@@ -20,24 +20,31 @@ export const getCurrentUser = () => readJson(SESSION_KEY, null);
 
 export const isAuthenticated = () => Boolean(getCurrentUser());
 
-export const registerUser = ({ username, password }) => {
+export const registerUser = ({ username, email, password }) => {
   const normalizedUsername = username.trim().toLowerCase();
+  const normalizedEmail = email.trim().toLowerCase();
   const users = getUsers();
   const userExists = users.some((user) => user.username === normalizedUsername);
+  const emailExists = users.some((user) => user.email === normalizedEmail);
 
   if (userExists) {
     return { ok: false, message: "This username is already registered." };
   }
 
+  if (emailExists) {
+    return { ok: false, message: "This email is already registered." };
+  }
+
   const user = {
     id: crypto.randomUUID(),
     username: normalizedUsername,
+    email: normalizedEmail,
     password,
     createdAt: new Date().toISOString(),
   };
 
   writeJson(USERS_KEY, [...users, user]);
-  writeJson(SESSION_KEY, { id: user.id, username: user.username });
+  writeJson(SESSION_KEY, { id: user.id, username: user.username, email: user.email });
   localStorage.setItem("token", user.id);
   window.dispatchEvent(new Event("auth-change"));
 

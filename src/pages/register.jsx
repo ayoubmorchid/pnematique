@@ -6,6 +6,7 @@ const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
+    email: "",
     password: "",
     confirmPassword: "",
   });
@@ -33,6 +34,11 @@ const SignUpForm = () => {
       return;
     }
 
+    if (!/^\S+@\S+\.\S+$/.test(formData.email.trim())) {
+      setError("Please provide a valid email address.");
+      return;
+    }
+
     if (formData.password.length < 6) {
       setError("Password must be at least 6 characters.");
       return;
@@ -48,6 +54,7 @@ const SignUpForm = () => {
     setTimeout(() => {
       const result = registerUser({
         username: formData.username,
+        email: formData.email,
         password: formData.password,
       });
 
@@ -80,7 +87,21 @@ const SignUpForm = () => {
               autoComplete="username"
               value={formData.username}
               onChange={handleChange}
-              placeholder="Type your username or Email"
+              placeholder="Type your username"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="email"
+              id="email"
+              autoComplete="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Type your email"
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400"
               required
             />
