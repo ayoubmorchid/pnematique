@@ -1,0 +1,18 @@
+# April UI Polish
+
+- 2026-04-10 09:00 - Reviewed the updated color palette after header, hero, and checkout polish.
+- 2026-04-10 13:00 - Checked header contrast, cart badge readability, and mobile menu states.
+- 2026-04-10 17:00 - Checked hero background, CTA contrast, and headline color balance.
+- 2026-04-11 09:15 - Reviewed product card border, image panel, price color, and button visibility.
+- 2026-04-11 13:10 - Reviewed shop grid spacing and support link placement across common widths.
+- 2026-04-11 17:40 - Checked footer copy, newsletter button, and section divider consistency.
+- 2026-04-12 09:30 - Reviewed payment page background, card surface, and primary button contrast.
+- 2026-04-12 13:25 - Checked cart page background and order summary surface after visual polish.
+- 2026-04-12 17:20 - Reviewed confirmation page background and invoice fallback readability.
+- 2026-04-13 09:05 - Rechecked responsive behavior for header, hero, product grid, cart, and checkout.
+- 2026-04-13 13:45 - Rechecked labels, aria names, links, and focus-visible states after UI changes.
+- 2026-04-13 17:30 - Confirmed build and lint remain the main validation steps for the polish branch.
+- 2026-04-14 09:00 - Final color review kept the palette green-led but softer and more consistent.
+- 2026-04-14 13:00 - Final layout review confirmed small spacing changes without changing the app idea.
+- 2026-04-14 17:00 - Final April polish notes completed before final build and status verification.
+- 2026-04-17 17:00 - Verified local account flow: sign-up creates a user, login uses saved users, protected pages read the shared auth state.

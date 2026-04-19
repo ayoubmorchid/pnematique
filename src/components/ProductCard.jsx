@@ -4,15 +4,15 @@ const ProductCard = ({ product, AddToCart }) => {
   };
 
   return (
-    <article className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all relative">
-      <div className="mb-4 bg-gray-100 rounded-md p-3">
+    <article className="bg-white rounded-lg p-4 shadow-sm border border-gray-100 hover:border-green-200 hover:shadow-md hover:-translate-y-1 transition-all relative">
+      <div className="mb-4 bg-green-50/60 rounded-md p-3">
         <img src={product.image} alt={product.name} className="aspect-[4/3] w-full object-contain" />
       </div>
 
       <div className="flex h-full flex-col">
         <div className="flex items-start gap-3">
           <h3 className="text-base font-bold text-gray-800 leading-snug">{product.name}</h3>
-          <p className="text-base text-green-700 font-bold ml-auto whitespace-nowrap">{product.price} MAD</p>
+          <p className="text-base text-emerald-700 font-bold ml-auto whitespace-nowrap">{product.price} MAD</p>
         </div>
         <p className="text-gray-500 text-sm mt-2 leading-relaxed">{product.description}</p>
         <div className="flex items-center gap-2 mt-4">

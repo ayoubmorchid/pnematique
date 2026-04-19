@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ShoppingCart } from 'lucide-react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/img/logo/logo.png';
+import { isAuthenticated, logoutUser } from '../utils/auth';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -19,7 +20,16 @@ const Header = ({ cartCount }) => {
   const location = useLocation();
 
   useEffect(() => {
-    setIsLoggedIn(!!localStorage.getItem('token'));
+    const syncAuthState = () => setIsLoggedIn(isAuthenticated());
+
+    syncAuthState();
+    window.addEventListener('auth-change', syncAuthState);
+    window.addEventListener('storage', syncAuthState);
+
+    return () => {
+      window.removeEventListener('auth-change', syncAuthState);
+      window.removeEventListener('storage', syncAuthState);
+    };
   }, []);
 
   useEffect(() => {
@@ -27,18 +37,20 @@ const Header = ({ cartCount }) => {
   }, [location.pathname]);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    logoutUser();
     setIsLoggedIn(false);
     navigate('/login');
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-emerald-200 bg-gradient-to-r from-emerald-950 via-green-800 to-lime-700 shadow-lg shadow-green-900/10">
       <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           <NavLink to="/" className="flex items-center gap-2" aria-label="Go to home page">
-            <img src={logo} className="w-10 h-10 object-contain" alt="Pneumatique logo" />
-            <span className="hidden sm:inline text-lg font-bold text-gray-900">Pneumatique</span>
+            <span className="rounded-full bg-white p-1 shadow-sm">
+              <img src={logo} className="h-9 w-9 object-contain" alt="Pneumatique logo" />
+            </span>
+            <span className="hidden sm:inline text-lg font-bold text-white">Pneumatique</span>
           </NavLink>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -48,8 +60,8 @@ const Header = ({ cartCount }) => {
                 to={item.href}
                 className={({ isActive }) =>
                   isActive
-                    ? 'text-[#32CD32] font-bold transition-colors'
-                    : 'text-gray-600 hover:text-[#32CD32] transition-colors'
+                    ? 'rounded-full bg-white px-4 py-2 font-bold text-green-800 shadow-sm transition-colors'
+                    : 'rounded-full px-4 py-2 text-green-50 transition-colors hover:bg-white/15 hover:text-white'
                 }
               >
                 {item.name}
@@ -58,28 +70,40 @@ const Header = ({ cartCount }) => {
 
             {!isLoggedIn ? (
               <>
-                <NavLink to="/login" className="text-gray-600 hover:text-[#32CD32] transition-colors font-medium">
+                <NavLink to="/login" className="font-medium text-green-50 transition-colors hover:text-white">
                   Login
                 </NavLink>
-                <NavLink to="/signup" className="text-gray-600 hover:text-[#32CD32] transition-colors font-medium">
+                <NavLink to="/signup" className="rounded-full bg-white px-4 py-2 font-semibold text-green-800 shadow-sm transition-colors hover:bg-green-50">
                   Sign up
                 </NavLink>
               </>
             ) : (
-              <button
-                onClick={handleLogout}
-                className="text-red-500 hover:text-red-600 transition-colors font-medium"
-              >
-                Logout
-              </button>
+              <>
+                <NavLink
+                  to="/profile"
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'rounded-full bg-white px-4 py-2 font-bold text-green-800 shadow-sm transition-colors'
+                      : 'rounded-full px-4 py-2 font-medium text-green-50 transition-colors hover:bg-white/15 hover:text-white'
+                  }
+                >
+                  Profile
+                </NavLink>
+                <button
+                  onClick={handleLogout}
+                  className="rounded-full border border-white/40 px-4 py-2 font-medium text-white transition-colors hover:bg-white hover:text-red-600"
+                >
+                  Logout
+                </button>
+              </>
             )}
           </div>
 
           <div className="flex items-center">
-            <NavLink to="/cart" aria-label="View cart" className="relative">
-              <ShoppingCart className="w-6 h-6 text-gray-600 hover:text-[#32CD32] transition-colors" />
+            <NavLink to="/cart" aria-label="View cart" className="relative rounded-full bg-white/15 p-2 transition-colors hover:bg-white">
+              <ShoppingCart className="h-5 w-5 text-white transition-colors hover:text-green-800" />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-[#32CD32] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-lime-300 text-xs font-bold text-green-950 shadow-sm">
                   {cartCount}
                 </span>
               )}
@@ -93,9 +117,9 @@ const Header = ({ cartCount }) => {
               aria-label="Toggle navigation menu"
             >
               {isOpen ? (
-                <X className="w-6 h-6 text-gray-600" />
+                <X className="h-6 w-6 text-white" />
               ) : (
-                <Menu className="w-6 h-6 text-gray-600" />
+                <Menu className="h-6 w-6 text-white" />
               )}
             </button>
           </div>
@@ -110,15 +134,15 @@ const Header = ({ cartCount }) => {
               className="md:hidden"
               id="mobile-navigation"
             >
-              <div className="py-4 space-y-3 border-t border-gray-100 mt-3">
+              <div className="mt-3 space-y-3 border-t border-white/20 py-4">
                 {navigation.map((item) => (
                   <NavLink
                     key={item.name}
                     to={item.href}
                     className={({ isActive }) =>
                       isActive
-                        ? 'block text-[#32CD32] font-bold transition-colors'
-                        : 'block text-gray-600 hover:text-[#32CD32] transition-colors'
+                        ? 'block rounded-md bg-white px-4 py-2 font-bold text-green-800 transition-colors'
+                        : 'block rounded-md px-4 py-2 text-green-50 transition-colors hover:bg-white/15 hover:text-white'
                     }
                   >
                     {item.name}
@@ -127,23 +151,35 @@ const Header = ({ cartCount }) => {
 
                 {!isLoggedIn ? (
                   <>
-                    <NavLink to="/login" className="block text-gray-600 hover:text-[#32CD32] transition-colors">
+                    <NavLink to="/login" className="block rounded-md px-4 py-2 text-green-50 transition-colors hover:bg-white/15 hover:text-white">
                       Login
                     </NavLink>
-                    <NavLink to="/signup" className="block text-gray-600 hover:text-[#32CD32] transition-colors">
+                    <NavLink to="/signup" className="block rounded-md bg-white px-4 py-2 font-semibold text-green-800 transition-colors hover:bg-green-50">
                       Sign up
                     </NavLink>
                   </>
                 ) : (
-                  <button
-                    onClick={() => {
-                      handleLogout();
-                      setIsOpen(false);
-                    }}
-                    className="block text-red-500 hover:text-red-600 transition-colors"
-                  >
-                    Logout
-                  </button>
+                  <>
+                    <NavLink
+                      to="/profile"
+                      className={({ isActive }) =>
+                        isActive
+                          ? 'block rounded-md bg-white px-4 py-2 font-bold text-green-800 transition-colors'
+                          : 'block rounded-md px-4 py-2 text-green-50 transition-colors hover:bg-white/15 hover:text-white'
+                      }
+                    >
+                      Profile
+                    </NavLink>
+                    <button
+                      onClick={() => {
+                        handleLogout();
+                        setIsOpen(false);
+                      }}
+                      className="block rounded-md px-4 py-2 text-left font-medium text-red-100 transition-colors hover:bg-white hover:text-red-600"
+                    >
+                      Logout
+                    </button>
+                  </>
                 )}
               </div>
             </motion.div>

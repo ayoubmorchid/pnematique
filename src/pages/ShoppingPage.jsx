@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
+import { readStorageJson } from '../utils/storage';
 import p1 from '../assets/img/Products/p1.webp';
 import p2 from '../assets/img/Products/p2.jpg';
 import p3 from '../assets/img/Products/p3.avif';
@@ -71,9 +72,7 @@ const products = [
 
 const ShoppingPage = ({onCartCountChange}) => {
   const [cart, setCart] = useState(() => {
-    // Load cart from localStorage or initialize as an empty array
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
+    return readStorageJson('cart', []);
   });
 
   const addToCart = useCallback((product) => {
@@ -108,11 +107,11 @@ const ShoppingPage = ({onCartCountChange}) => {
   
 
   return (
-    <div className="font-[sans-serif] bg-gray-100 min-h-screen">
+    <div className="font-[sans-serif] bg-gradient-to-b from-green-50/60 to-gray-100 min-h-screen">
       <div className="px-4 py-10 sm:px-6 lg:px-8 mx-auto max-w-7xl">
         {/* first section*/}
         <div className="text-center mb-8">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-4">Car Parts & Accessories</h2>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Car Parts & Accessories</h2>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
             Browse our high-quality automotive spare parts and accessories to keep your vehicle running smoothly.
           </p>
@@ -125,7 +124,7 @@ const ShoppingPage = ({onCartCountChange}) => {
         </div>
 
         {/* section close*/}
-        <div className="mt-8 text-center">
+        <div className="mt-10 text-center">
           <p className="text-gray-600 text-sm sm:text-base">
             Need assistance?{' '}
             <Link to="/contact" className="text-[#28a745] font-semibold hover:text-[#218838]">

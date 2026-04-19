@@ -1,17 +1,26 @@
-import { useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/cart-context";
+import { getCurrentUser, loginUser } from "../utils/auth";
 
 const Login = () => {
   const { importPendingBook } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [errors, setErrors] = useState({});
+  const [submitError, setSubmitError] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (getCurrentUser()) {
+      navigate("/", { replace: true });
+    }
+  }, [navigate]);
 
   const handleValidation = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setSubmitError("");
 
     if (name === "username") {
       setErrors((prev) => ({
@@ -41,18 +50,19 @@ const Login = () => {
     }
 
     setTimeout(() => {
-      if (formData.username === "admin" && formData.password === "123456") {
-        localStorage.setItem("token", "logged_in");
-        importPendingBook();
-        const redirectPath = localStorage.getItem("redirectPath") || "/";
-        localStorage.removeItem("redirectPath");
+      const result = loginUser(formData);
+      if (!result.ok) {
+        setSubmitError(result.message);
         setIsLoading(false);
-        navigate(redirectPath);
-      } else {
-        setIsLoading(false);
-        alert("Invalid username or password");
+        return;
       }
-    }, 2000);
+
+      importPendingBook();
+      const redirectPath = localStorage.getItem("redirectPath") || "/";
+      localStorage.removeItem("redirectPath");
+      setIsLoading(false);
+      navigate(redirectPath);
+    }, 600);
   };
 
   return (
@@ -69,6 +79,8 @@ const Login = () => {
               type="text"
               id="username"
               name="username"
+              autoComplete="username"
+              value={formData.username}
               onChange={handleValidation}
               className={`mt-1 block w-full px-4 py-2 border ${errors.username ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400`}
               required
@@ -82,12 +94,16 @@ const Login = () => {
               type="password"
               id="password"
               name="password"
+              autoComplete="current-password"
+              value={formData.password}
               onChange={handleValidation}
               className={`mt-1 block w-full px-4 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400`}
               required
             />
             {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
           </div>
+
+          {submitError && <p className="text-sm text-red-600" role="alert">{submitError}</p>}
 
           <button
             type="submit"

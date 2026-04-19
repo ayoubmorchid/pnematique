@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import CartItem from '../components/CartItem';
+import { readStorageJson } from '../utils/storage';
 
 const Cart = ({ onCartCountChange }) => {
   const [cartItems, setCartItems] = useState(() => {
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
+    return readStorageJson('cart', []);
   });
 
   const handleUpdateQuantity = (id, quantity) => {
@@ -37,7 +37,7 @@ const Cart = ({ onCartCountChange }) => {
   const total = subtotal + shipping;
 
   return (
-    <div className="pt-20 bg-gray-50 min-h-screen">
+    <div className="pt-20 bg-gradient-to-b from-green-50/50 to-gray-50 min-h-screen">
       <section className="py-20">
         <div className="container mx-auto px-6">
           <motion.h1
@@ -80,7 +80,7 @@ const Cart = ({ onCartCountChange }) => {
             </div>
 
             {cartItems.length > 0 && (
-              <div className="bg-white p-6 rounded-2xl shadow-xl h-fit sticky top-32">
+              <div className="bg-white p-6 rounded-2xl shadow-xl border border-green-100 h-fit sticky top-32">
                 <h2 className="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">🧾 Order Summary</h2>
                 <div className="space-y-2 text-gray-700 mb-4">
                   <div className="flex justify-between">

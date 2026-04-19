@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --brand-green: #16a34a;
+  --brand-ink: #111827;
+  --page-soft: #f7faf8;
+}
+
+body {
+  background: var(--page-soft);
+  color: var(--brand-ink);
+}
+
+::selection {
+  background: #bbf7d0;
+  color: #064e3b;
+}

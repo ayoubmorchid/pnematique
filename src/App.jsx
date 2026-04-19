@@ -12,6 +12,7 @@ import Confirmation from './pages/Confirmation';
 import Payment from './pages/Payment';
 import Login from './pages/login';
 import SignUpForm from './pages/register';
+import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
 
 const AppContent = () => {
@@ -59,6 +60,14 @@ const AppContent = () => {
             element={
               <ProtectedRoute>
                 <Payment />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
               </ProtectedRoute>
             }
           />

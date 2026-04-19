@@ -37,8 +37,8 @@ const Payment = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-12">
-      <div className="bg-white shadow-2xl rounded-xl p-8 max-w-md w-full">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-gray-100 flex items-center justify-center px-4 py-12">
+      <div className="bg-white shadow-xl border border-green-100 rounded-xl p-8 max-w-md w-full">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
           Secure Payment
         </h1>
@@ -127,7 +127,7 @@ const Payment = () => {
           <button
             type="submit"
             disabled={processing}
-            className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-3 rounded-md font-semibold transition"
+            className="w-full bg-green-700 hover:bg-green-800 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-3 rounded-md font-semibold transition"
           >
             {processing ? "Processing..." : "Pay Now"}
           </button>
