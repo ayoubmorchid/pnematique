@@ -10,13 +10,10 @@ import p5 from '../assets/img/Products/p5.jpg';
 import p6 from '../assets/img/Products/p6.jpg';
 import p7 from '../assets/img/Products/p7.jpg';
 import p8 from '../assets/img/Products/p8.jpg';
-
-const generalProductImages = {
-  tireGauge: 'https://source.unsplash.com/640x480/?tire-pressure-gauge,car',
-  radiatorCoolant: 'https://source.unsplash.com/640x480/?radiator-coolant,automotive',
-  jumperCables: 'https://source.unsplash.com/640x480/?jumper-cables,car-battery',
-  detailingKit: 'https://source.unsplash.com/640x480/?car-cleaning-kit,auto-detailing',
-};
+import tireGauge from '../assets/img/Products/tire-pressure-gauge.svg';
+import radiatorCoolant from '../assets/img/Products/radiator-coolant.svg';
+import jumperCables from '../assets/img/Products/jumper-cables.svg';
+import cleaningKit from '../assets/img/Products/car-cleaning-kit.svg';
 
 const products = [
     {
@@ -80,28 +77,28 @@ const products = [
       name: 'Tire Pressure Gauge',
       price: 12,
       description: 'Compact gauge for quick tire pressure checks before every trip.',
-      image: generalProductImages.tireGauge,
+      image: tireGauge,
     },
     {
       id: 10,
       name: 'Radiator Coolant',
       price: 30,
       description: 'Reliable coolant blend to help protect the engine from overheating.',
-      image: generalProductImages.radiatorCoolant,
+      image: radiatorCoolant,
     },
     {
       id: 11,
       name: 'Jumper Cables',
       price: 55,
       description: 'Heavy-duty booster cables for emergency battery support.',
-      image: generalProductImages.jumperCables,
+      image: jumperCables,
     },
     {
       id: 12,
       name: 'Car Cleaning Kit',
       price: 40,
       description: 'Simple interior and exterior care kit for everyday vehicle cleaning.',
-      image: generalProductImages.detailingKit,
+      image: cleaningKit,
     },
   ];  
 
