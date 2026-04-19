@@ -68,6 +68,34 @@ const products = [
       description: 'Ensures smooth gear shifts and prolongs transmission life.',
       image: p8,
     },
+    {
+      id: 9,
+      name: 'Tire Pressure Gauge',
+      price: 12,
+      description: 'Compact gauge for quick tire pressure checks before every trip.',
+      image: p3,
+    },
+    {
+      id: 10,
+      name: 'Radiator Coolant',
+      price: 30,
+      description: 'Reliable coolant blend to help protect the engine from overheating.',
+      image: p2,
+    },
+    {
+      id: 11,
+      name: 'Jumper Cables',
+      price: 55,
+      description: 'Heavy-duty booster cables for emergency battery support.',
+      image: p5,
+    },
+    {
+      id: 12,
+      name: 'Car Cleaning Kit',
+      price: 40,
+      description: 'Simple interior and exterior care kit for everyday vehicle cleaning.',
+      image: p6,
+    },
   ];  
 
 const ShoppingPage = ({onCartCountChange}) => {
@@ -114,6 +142,9 @@ const ShoppingPage = ({onCartCountChange}) => {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Car Parts & Accessories</h2>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
             Browse our high-quality automotive spare parts and accessories to keep your vehicle running smoothly.
+          </p>
+          <p className="mt-3 text-sm font-semibold text-emerald-700">
+            12 essential products available now.
           </p>
         </div>
         {/*  producte */}
