@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Radiator coolant</title>
+  <desc id="desc">Coolant bottle with radiator label.</desc>
+  <rect width="640" height="480" rx="36" fill="#ecfeff"/>
+  <path d="M242 94h128c21 0 38 17 38 38v250c0 28-22 50-50 50H254c-28 0-50-22-50-50V132c0-21 17-38 38-38z" fill="#f8fafc" stroke="#0f766e" stroke-width="10"/>
+  <path d="M382 134h52c24 0 44 20 44 44v48c0 24-20 44-44 44h-26v-54h20c6 0 12-5 12-12v-38c0-7-6-12-12-12h-46z" fill="#ccfbf1" stroke="#0f766e" stroke-width="10"/>
+  <rect x="252" y="54" width="106" height="56" rx="14" fill="#0f766e"/>
+  <rect x="238" y="206" width="140" height="122" rx="18" fill="#dcfce7" stroke="#16a34a" stroke-width="6"/>
+  <text x="308" y="246" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#14532d">COOLANT</text>
+  <text x="308" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#166534">Radiator</text>
+  <path d="M270 306h76" stroke="#22c55e" stroke-width="8" stroke-linecap="round"/>
+  <path d="M232 148h146" stroke="#d1fae5" stroke-width="16" stroke-linecap="round"/>
+</svg>
