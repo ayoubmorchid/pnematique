@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../context/cart-context";
 
 const Login = () => {
   const { importPendingBook } = useContext(CartContext);
@@ -105,7 +105,7 @@ const Login = () => {
         </div>
 
         <div className="text-center mt-6">
-          <p className="text-gray-600 text-sm">Don't have an account?{' '}
+          <p className="text-gray-600 text-sm">Do not have an account?{' '}
             <Link to="/signup" className="text-green-600 font-semibold hover:underline">Sign up here</Link>
           </p>
         </div>

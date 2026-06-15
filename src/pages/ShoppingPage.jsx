@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import p1 from '../assets/img/Products/p1.webp';
 import p2 from '../assets/img/Products/p2.jpg';
@@ -75,23 +76,21 @@ const ShoppingPage = ({onCartCountChange}) => {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  const addToCart = (product) => {
-    const existingItem = cart.find((item) => item.id === product.id);
-  
-    if (existingItem) {
-      // Update quantity if the item is already in the cart
-      const updatedCart = cart.map((item) =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      );
-      setCart(updatedCart);
-    } else {
-      // Add the new product with a default quantity of 1
-      const updatedCart = [...cart, { ...product, quantity: 1 }];
-      setCart(updatedCart);
-    }
-  };
+  const addToCart = useCallback((product) => {
+    setCart((currentCart) => {
+      const existingItem = currentCart.find((item) => item.id === product.id);
+
+      if (existingItem) {
+        return currentCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+
+      return [...currentCart, { ...product, quantity: 1 }];
+    });
+  }, []);
   
 
   // Update localStorage whenever the cart changes
@@ -102,15 +101,15 @@ const ShoppingPage = ({onCartCountChange}) => {
   useEffect(() => {
     const uniqueItemCount = new Set(cart.map(item => item.id)).size;
     onCartCountChange(uniqueItemCount); 
-  }, [cart]); 
+  }, [cart, onCartCountChange]); 
 
 
 
   
 
   return (
-    <div className="font-[sans-serif] bg-gray-100">
-      <div className="p-4 mx-auto lg:max-w-7xl md:max-w-4xl sm:max-w-xl max-sm:max-w-sm">
+    <div className="font-[sans-serif] bg-gray-100 min-h-screen">
+      <div className="px-4 py-10 sm:px-6 lg:px-8 mx-auto max-w-7xl">
         {/* first section*/}
         <div className="text-center mb-8">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-4">Car Parts & Accessories</h2>
@@ -119,7 +118,7 @@ const ShoppingPage = ({onCartCountChange}) => {
           </p>
         </div>
         {/*  producte */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-xl:gap-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} AddToCart={addToCart} />
           ))}
@@ -129,9 +128,9 @@ const ShoppingPage = ({onCartCountChange}) => {
         <div className="mt-8 text-center">
           <p className="text-gray-600 text-sm sm:text-base">
             Need assistance?{' '}
-            <a href="/contact" className="text-[#28a745] font-semibold hover:text-[#218838]">
+            <Link to="/contact" className="text-[#28a745] font-semibold hover:text-[#218838]">
               Contact us
-            </a>{' '}
+            </Link>{' '}
             for expert recommendations and support.
           </p>
         </div>

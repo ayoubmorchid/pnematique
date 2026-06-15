@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
@@ -27,7 +27,7 @@ const Payment = () => {
 
     setTimeout(() => {
       if (cardNumber.length !== 16 || cvv.length !== 3 || !isValidExpiryDate(expiryDate)) {
-        setError("❌ Invalid card details. Please check your information.");
+        setError("Invalid card details. Please check your information.");
         setProcessing(false);
         return;
       }
@@ -40,15 +40,18 @@ const Payment = () => {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-12">
       <div className="bg-white shadow-2xl rounded-xl p-8 max-w-md w-full">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
-          💳 Secure Payment
+          Secure Payment
         </h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="cardNumber" className="block text-sm font-medium text-gray-700 mb-1">
               Card Number
             </label>
             <input
+              id="cardNumber"
               type="text"
+              inputMode="numeric"
+              autoComplete="cc-number"
               maxLength="16"
               value={cardNumber}
               onChange={(e) => setCardNumber(e.target.value.replace(/\D/g, ""))}
@@ -59,11 +62,13 @@ const Payment = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="cardHolder" className="block text-sm font-medium text-gray-700 mb-1">
               Card Holder Name
             </label>
             <input
+              id="cardHolder"
               type="text"
+              autoComplete="cc-name"
               value={cardHolder}
               onChange={(e) => setCardHolder(e.target.value)}
               placeholder="John Doe"
@@ -74,11 +79,14 @@ const Payment = () => {
 
           <div className="flex gap-4">
             <div className="flex-1">
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="expiryDate" className="block text-sm font-medium text-gray-700 mb-1">
                 Expiry Date
               </label>
               <input
+                id="expiryDate"
                 type="text"
+                inputMode="numeric"
+                autoComplete="cc-exp"
                 placeholder="MM/YY"
                 maxLength="5"
                 value={expiryDate}
@@ -96,11 +104,14 @@ const Payment = () => {
             </div>
 
             <div className="flex-1">
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="cvv" className="block text-sm font-medium text-gray-700 mb-1">
                 CVV
               </label>
               <input
+                id="cvv"
                 type="text"
+                inputMode="numeric"
+                autoComplete="cc-csc"
                 placeholder="123"
                 maxLength="3"
                 value={cvv}
@@ -116,7 +127,7 @@ const Payment = () => {
           <button
             type="submit"
             disabled={processing}
-            className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-md font-semibold transition"
+            className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-3 rounded-md font-semibold transition"
           >
             {processing ? "Processing..." : "Pay Now"}
           </button>

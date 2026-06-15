@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -18,9 +18,9 @@ const AppContent = () => {
   const [cartCount, setCartCount] = useState(0);
   const location = useLocation();
 
-  const updateCartCount = (newCount) => {
+  const updateCartCount = useCallback((newCount) => {
     setCartCount(newCount);
-  };
+  }, []);
 
   const hideFooterPaths = ['/login', '/signup'];
   const shouldShowFooter = !hideFooterPaths.includes(location.pathname);
@@ -66,6 +66,16 @@ const AppContent = () => {
           {/* ✅ صفحات عامة */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUpForm />} />
+          <Route
+            path="*"
+            element={
+              <div className="container mx-auto px-6 py-20 text-center">
+                <p className="text-sm font-semibold uppercase tracking-wide text-green-600">404</p>
+                <h1 className="mt-3 text-3xl font-bold text-gray-900">Page not found</h1>
+                <p className="mt-3 text-gray-600">The page you are looking for does not exist.</p>
+              </div>
+            }
+          />
         </Routes>
       </main>
 
